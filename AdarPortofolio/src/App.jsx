@@ -7,6 +7,13 @@ import adarImg from './assets/adar.jpg'
 import reactIcon from './assets/react.svg'
 import Reservasi from './assets/Reservasi.png'
 import Mido from './assets/Mido.jpg'
+import Himpunan from './assets/himpunan.jpg'
+import Devfest from './assets/devfest.jpg'
+import pkl1 from './assets/pkl1.png'
+import pkl from './assets/pkl.png'
+import pengabdian from './assets/pengabdian.jpg'
+import studium from './assets/studium.jpg'
+import studium1 from './assets/studium1.jpg'
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -28,6 +35,43 @@ function App() {
     document.documentElement.dataset.theme = theme
     localStorage.setItem('theme', theme)
   }, [theme])
+
+  // Scroll-spy / active nav link handling
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll('section[id]'))
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a'))
+
+    if (!sections.length || !navLinks.length) return
+
+    // click handler for immediate feedback
+    const onClick = (e) => {
+      navLinks.forEach((l) => l.classList.remove('active'))
+      e.currentTarget.classList.add('active')
+    }
+
+    navLinks.forEach((link) => link.addEventListener('click', onClick))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id
+          const link = document.querySelector(`.nav-links a[href="#${id}"]`)
+          if (entry.isIntersecting) {
+            navLinks.forEach((l) => l.classList.remove('active'))
+            if (link) link.classList.add('active')
+          }
+        })
+      },
+      { root: null, rootMargin: '0px 0px -40% 0px', threshold: 0.2 },
+    )
+
+    sections.forEach((s) => observer.observe(s))
+
+    return () => {
+      observer.disconnect()
+      navLinks.forEach((link) => link.removeEventListener('click', onClick))
+    }
+  }, [])
 
   const projects = useMemo(
     () => [
@@ -122,23 +166,60 @@ function App() {
   const experiences = useMemo(
     () => [
       {
-        role: 'IT Support',
+        role: 'IT Support Intern',
         company: 'Universitas Negeri Makassar',
         period: 'Jan - Mar 2022',
         highlights: [
           'Instalasi software untuk lab kampus di gedung utama.',
-          'Pemasangan dan konfigurasi jaringan LAN.',
+          'Pemasangan dan konfigurasi jaringan.',
           'Pembuatan Dashboard Website Absensi mahasiswa.',
         ],
         stack: '-',
-        photos: [
+        images: [
           {
-            src: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80',
-            alt: 'Team collaboration session',
+            image: pkl1,
           },
           {
-            src: 'https://images.unsplash.com/photo-1522071901873-411886a10004?auto=format&fit=crop&w=900&q=80',
-            alt: 'Sprint planning board',
+            image: pkl,
+          },
+        ],
+      },
+
+      {
+        role: 'Pengabdian Masyarakat',
+        company: 'SMPN 58 Jakarta',
+        period: '8 Mei 2025',
+        highlights: [
+          'Penyuluhan tentang pentingnya teknologi dalam pendidikan.',
+          'Pengenalan konsep coding sederhana dengan dasar pemrograman.',
+        ],
+        stack: '-',
+        images: [
+          {
+            image: pengabdian,
+          },
+          {
+            image: pengabdian,
+          },
+        ],
+      },
+
+      {
+        role: 'Studium Generale',
+        company: 'Telkom University Jakarta',
+        period: '28 Feb 2025',
+        highlights: [
+          'Kepanitiaan acara Studium Generale.',
+          'Membantu koordinasi dengan pembicara dan peserta.',
+          'Mendukung desain materi presentasi dan dokumentasi acara.',
+        ],
+        stack: '-',
+        images: [
+          {
+            image: studium,
+          },
+          {
+            image: studium1,
           },
         ],
       },
@@ -153,13 +234,13 @@ function App() {
         title: 'Anggota Divisi PDD',
         org: 'HMIT Telkom University Jakarta',
         detail: 'Bertanggung jawab dalam pengelolaan publikasi digital, pembuatan desain visual, serta dokumentasi kegiatan organisasi. Berperan dalam menjaga konsistensi identitas visual dan meningkatkan engagement media sosial himpunan.',
-        photo: 'https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=800&q=80',
+        image: Himpunan,
       },
       {
         title: 'Anggota',
         org: 'GDOC Telkom University Jakarta',
         detail: 'Berpartisipasi dalam pengembangan kolaborasi antar anggota untuk menciptakan solusi inovatif di bidang IT.',
-        photo: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
+        image: Devfest,
       },
     ],
     [],
@@ -190,7 +271,7 @@ function App() {
         </div>
       </header>
 
-      <section className="hero">
+      <section className="hero pembuka">
         <div className="container hero-grid">
           <div className="hero-content">
             <p className="eyebrow">Information Technology Student</p>
@@ -205,9 +286,7 @@ function App() {
               <a href="#projects" className="button primary">
                 View Projects
               </a>
-              <a href="#contact" className="button ghost">
-                Get in Touch
-              </a>
+
             </div>
             <div className="hero-socials">
               <a className="icon-pill" href="https://share.google/I7IkorQTDfK2SZuUr" target="_blank" rel="noopener noreferrer" title="LinkedIn">ln</a>
@@ -220,7 +299,7 @@ function App() {
               <span>UI/UX Design</span>
             </div>
           </div>
-          <div className="hero-card">
+          {/* <div className="hero-card">
             <div className="hero-meta">
               <p className="description">
               Saya membangun produk digital, UI yang rapi,
@@ -231,9 +310,8 @@ function App() {
               <p>Telkom University Jakarta</p>
               <p className="hero-label">Focus</p>
               <p>Web Developer • UI/UX</p>
-            </div>
-           
-          </div>
+            </div>  
+          </div> */}
         </div>
         <div className="hero-blob" aria-hidden="true" />
       </section>
@@ -271,6 +349,7 @@ function App() {
             </div>
           </div>
           <div className="about-card">
+            
             <img className="about-photo" src={adarImg} alt="Adar Sarx" />
             <h3>Adar Sarx Christian Firdaus Junior</h3>
             <p className="muted">
@@ -351,9 +430,9 @@ function App() {
       <section id="experience" className="section alt">
         <div className="container">
           <div className="section-head">
-            <p className="section-kicker">Work Experience</p>
+            <p className="section-kicker">internship experience & other activities</p>
             <h2 className="section-title">
-              <span>Work</span> Experience
+              <span>Internship Experience</span> & other activities
             </h2>
             <p>Pengalaman magang dengan impact terukur dan fokus engineering.</p>
           </div>
@@ -375,9 +454,9 @@ function App() {
                     ))}
                   </ul>
                   <div className="experience-photos">
-                    {exp.photos.map((photo) => (
-                      <figure key={photo.src} className="photo-card">
-                        <img src={photo.src} alt={photo.alt} loading="lazy" />
+                    {exp.images && exp.images.map((img) => (
+                      <figure key={img.image} className="photo-card">
+                        <img src={img.image} alt={img.alt} loading="lazy" />
                       </figure>
                     ))}
                   </div>
@@ -392,7 +471,7 @@ function App() {
       <section id="organization" className="section">
         <div className="container">
           <div className="section-head">
-            <p className="section-kicker">Organizations & Leadership</p>
+            <p className="section-kicker">Organizations</p>
             <h2 className="section-title">
               <span>Organizations</span> & Leadership
             </h2>
@@ -402,7 +481,7 @@ function App() {
             {organizations.map((org) => (
               <div key={org.title} className="card org-card">
                 <figure className="org-photo">
-                  <img src={org.photo} alt="Organization documentation" loading="lazy" />
+                  <img src={org.image} alt="Organization documentation" loading="lazy" />
                 </figure>
                 <h3>{org.title}</h3>
                 <p className="stack">{org.org}</p>
