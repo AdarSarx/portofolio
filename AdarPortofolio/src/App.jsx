@@ -75,23 +75,20 @@ function App() {
         title: 'Programming Language',
         icon: '💻',
         items: [
-          { name: 'HTML', level: 91 },
-          { name: 'CSS', level: 87 },
-          { name: 'JavaScript', level: 76 },
-          { name: 'PHP', level: 79 },
-          { name: 'Python', level: 80 },
-          { name: 'Java', level: 76 },
-          { name: 'C/C++', level: 82 },
-          { name: 'Dart', level: 67 },
+          { name: 'JavaScript', level: 75 },
+          { name: 'PHP', level: 75 },
+          { name: 'Python', level: 65 },
+          { name: 'Java', level: 70 },
+          { name: 'C/C++', level: 70 },
+          { name: 'Golang', level: 77 },
         ],
       },
       {
         title: 'Framework & Libraries',
         icon: '🧩',
         items: [
-          { name: 'Laravel', level: 79 },
-          { name: 'React', level: 70 },
-          { name: 'Node.js', level: 78 },
+          { name: 'Laravel', level: 75 },
+          { name: 'Node.js', level: 70 },
           { name: 'Express', level: 74 },
           { name: 'Flutter', level: 63 },
         ],
@@ -130,8 +127,8 @@ function App() {
         period: 'Jan - Mar 2022',
         highlights: [
           'Instalasi software untuk lab kampus di gedung utama.',
-          'Pemasangan dan konfigurasi jaringan LAN untuk 5 ruangan.',
-          'Pembuatan Dashboard Website Absensi mahasiswa ',
+          'Pemasangan dan konfigurasi jaringan LAN.',
+          'Pembuatan Dashboard Website Absensi mahasiswa.',
         ],
         stack: '-',
         photos: [
@@ -161,7 +158,7 @@ function App() {
       {
         title: 'Anggota',
         org: 'GDOC Telkom University Jakarta',
-        detail: 'Berpartisipasi dalam pengembangan proyek teknologi dan kolaborasi antar anggota untuk menciptakan solusi inovatif di bidang IT.',
+        detail: 'Berpartisipasi dalam pengembangan kolaborasi antar anggota untuk menciptakan solusi inovatif di bidang IT.',
         photo: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
       },
     ],
@@ -201,13 +198,9 @@ function App() {
               Hi, I’m <span>Adar Sarx Christian Firdaus Junior</span>
             </h1>
             <p className="subtitle">
-              FrontEnd Developer | UI/UX Enthusiast | AI & IoT Explorer
+              Web Developer | UI/UX
             </p>
-            <p className="description">
-              Saya membangun produk digital dengan performa tinggi, UI yang rapi,
-              dan alur interaksi yang efisien. Fokus pada solusi modern berbasis
-              data dan teknologi terkini.
-            </p>
+            
             <div className="hero-actions">
               <a href="#projects" className="button primary">
                 View Projects
@@ -225,34 +218,21 @@ function App() {
             <div className="badge-row">
               <span>Web Development</span>
               <span>UI/UX Design</span>
-              <span>AI Integration</span>
-              <span>IoT Systems</span>
             </div>
           </div>
           <div className="hero-card">
-            <div className="hero-avatar" aria-hidden="true">
-              AS
-            </div>
             <div className="hero-meta">
+              <p className="description">
+              Saya membangun produk digital, UI yang rapi,
+              dan alur interaksi yang efisien. Fokus pada solusi modern berbasis
+              data dan teknologi terkini.
+            </p>
               <p className="hero-label">Campus</p>
               <p>Telkom University Jakarta</p>
               <p className="hero-label">Focus</p>
-              <p>Web Developer • UI/UX • AI • IoT</p>
+              <p>Web Developer • UI/UX</p>
             </div>
-            <div className="hero-stats">
-              <div>
-                <p className="stat-number"></p>
-                <p className="stat-label">Projects</p>
-              </div>
-              <div>
-                <p className="stat-number"></p>
-                <p className="stat-label">Internships</p>
-              </div>
-              <div>
-                <p className="stat-number"></p>
-                <p className="stat-label">Tools</p>
-              </div>
-            </div>
+           
           </div>
         </div>
         <div className="hero-blob" aria-hidden="true" />
@@ -296,15 +276,9 @@ function App() {
             <p className="muted">
               Telkom University Jakarta • Information Technology
             </p>
-            <p>
-              Passionate about building modern web products and crafting delightful
-              UI/UX experiences backed by data and emerging technologies.
-            </p>
             <div className="about-badges">
               <span>Web Dev</span>
               <span>UI/UX</span>
-              <span>AI</span>
-              <span>IoT</span>
             </div>
           </div>
         </div>
@@ -367,8 +341,6 @@ function App() {
                 <p className="stack">{project.stack}</p>
                 <p>{project.description}</p>
                 <div className="project-actions">
-                  <button className="chip">Demo</button>
-                  <button className="chip">Repo</button>
                 </div>
               </article>
             ))}
@@ -457,6 +429,7 @@ function App() {
             <div className="contact-info">
               <p>Email: adar.sarx@mail.com</p>
               <p>LinkedIn: linkedin.com/in/adarsarx</p>
+              <p>Medium: medium.com/@adar.sarx</p>
               <p>GitHub: github.com/adarsarx</p>
               <p>Location: Jakarta, Indonesia</p>
             </div>
